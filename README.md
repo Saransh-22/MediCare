@@ -1,6 +1,6 @@
-# Medical Assistant — NLP Project
+# MediCare — Medical Assistant
 
-Comprehensive medical-assistant web application combining a React frontend, Node/Express backend, MongoDB persistence, and a Python FastAPI-based medical chatbot (powered by LangChain + Google Gemini). The chatbot provides medical Q&A, sentiment-aware responses, and conversational memory for improved context.
+Comprehensive medical-assistant based upon NLP is a web application combining React frontend, Node/Express backend, MongoDB persistence, and a Python FastAPI-based medical chatbot (powered by LangChain + Google Gemini). The chatbot provides medical Q&A, sentiment-aware responses, and conversational memory for improved context.
 
 This README explains the architecture, setup, environment variables, run steps (PowerShell-friendly), testing, and security considerations.
 
@@ -51,7 +51,7 @@ Open three separate PowerShell terminals (one per service).
 1) Backend (Express)
 
 ```powershell
-cd "C:\Users\saran\OneDrive\Documents\NLP project\backend"
+cd "\backend"
 npm install
 # create backend/.env with MONGO_URI and JWT_SECRET before starting
 npm run dev   # uses nodemon, or 'npm start' to run with node
@@ -60,7 +60,7 @@ npm run dev   # uses nodemon, or 'npm start' to run with node
 2) Chatbot (FastAPI)
 
 ```powershell
-cd "C:\Users\saran\OneDrive\Documents\NLP project\chatbot"
+cd "\chatbot"
 
 # create and activate a venv
 python -m venv venv
@@ -79,7 +79,7 @@ uvicorn app:app --reload --host 0.0.0.0 --port 8000
 3) Frontend (React + Vite)
 
 ```powershell
-cd "C:\Users\saran\OneDrive\Documents\NLP project\my-app"
+cd "\my-app"
 npm install
 npm run dev
 # visit http://localhost:5173
