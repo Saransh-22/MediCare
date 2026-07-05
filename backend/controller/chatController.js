@@ -11,7 +11,7 @@ export const chatWithBot = async (req, res) => {
     const fetchFn =
       globalThis.fetch || (await import("node-fetch").then((m) => m.default));
 
-    const response = await fetchFn("http://localhost:8000/chat", {
+    const response = await fetchFn(`${process.env.CHATBOT_URL}/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -16,7 +16,7 @@ function ProfileCard({ user }) {
         if (!token) return;
 
         const response = await axios.get(
-          "http://localhost:5000/api/chat/history",
+          `${import.meta.env.VITE_API_URL}/api/chat/history`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

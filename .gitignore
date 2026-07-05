@@ -99,3 +99,9 @@ reports/
 uploads/
 temp/
 tmp/
+
+# Python environment files
+.python-version
+
+# Pytest cache
+.pytest_cache/

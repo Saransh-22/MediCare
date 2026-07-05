@@ -68,7 +68,7 @@ export default function Chatbot() {
       }
 
       const res = await axios.post(
-        "http://localhost:5000/api/chat",
+        `${import.meta.env.VITE_API_URL}/api/chat`,
         { message: input },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -142,7 +142,7 @@ export default function Chatbot() {
       }
 
       await axios.post(
-        "http://localhost:5000/api/chat/save",
+        `${import.meta.env.VITE_API_URL}/api/chat/save`,
         { message: userMsg.text, reply: botMsg.text },
         { headers: { Authorization: `Bearer ${token}` } }
       );

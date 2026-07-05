@@ -14,7 +14,7 @@ function History() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/chat/history", {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/chat/history`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const d = res.data;
@@ -29,7 +29,7 @@ function History() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/chat/history/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/chat/history/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setItems((prev) => prev.filter((chat) => chat._id !== id));
