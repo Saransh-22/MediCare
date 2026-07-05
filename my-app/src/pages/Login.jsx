@@ -33,12 +33,10 @@ export default function Login() {
         formData
       );
 
-      // Save JWT Token
       if (res.data?.token) {
         localStorage.setItem("userInside", res.data.token);
       }
 
-      // Save User Data
       if (res.data?.user) {
         localStorage.setItem(
           "currentuser",
@@ -48,18 +46,31 @@ export default function Login() {
 
       toast.success("Login successful! 🎉");
 
-      // Wait for toast to show
       setTimeout(() => {
         navigate("/home");
       }, 1200);
     } catch (err) {
       console.error("Login Error:", err);
 
-      toast.error(
-        err.response?.data?.message ||
-          err.message ||
-          "An error occurred during login ❌"
-      );
+      if (err.response) {
+        switch (err.response.status) {
+          case 400:
+          case 401:
+            toast.error(err.response.data.message);
+            break;
+
+          case 500:
+            toast.error("Server error. Please try again later.");
+            break;
+
+          default:
+            toast.error("Something went wrong.");
+        }
+      } else if (err.request) {
+        toast.error("Unable to reach the server.");
+      } else {
+        toast.error("Unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }
